@@ -47,13 +47,14 @@ for k=0:n_loop
     
     [T,R] = Recalage2(P_match,Q_match);
     
-    if k ~= n_loop
-        
-        set0(:,1:3) = (R*set0(:,1:3)')' + T';
 
-        P = set0(:,1:3);
-        Q = set1(:,1:3);
-    end
+    P = (R*set0(:,1:3)')' + T';
+
+
 
 end
+
+set0(:,1:3) = P;
+save("set0_bis.xyz",'set0')
+
 toc
