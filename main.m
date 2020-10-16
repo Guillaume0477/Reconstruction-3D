@@ -15,7 +15,45 @@ set0(:,1:3) = (R*set0(:,1:3)')' + T';
 P = set0(:,1:3);
 Q = set1(:,1:3);
 
-%dt = DelaunayTri (A) ;
-%[ pid d ] = nearestNeighbor( dt ,B) ;
+
+n_loop = 5;
+tic
 
 
+for k=0:n_loop
+
+    dt = DelaunayTri(P) ;
+    [ pid,d ] = nearestNeighbor( dt ,Q);
+
+     Q_match = [];
+     P_match = [];
+%     [w,l]=size(Q);
+     delta = 0.1;
+%     for i=1:w
+%         if d(i)<delta
+%             i
+%             pid(i)
+%             P_match =[ P_match ; P_match(pid(i),:) ];
+%             Q_match =[ Q_match ; Q_match(i,:) ];
+%         end
+%     end
+
+ 
+    
+    
+    indexOK=find(d<delta);
+    Q_match=Q(indexOK,:);
+    P_match=P(pid(indexOK),:);
+    
+    [T,R] = Recalage2(P_match,Q_match);
+    
+    if k ~= n_loop
+        
+        set0(:,1:3) = (R*set0(:,1:3)')' + T';
+
+        P = set0(:,1:3);
+        Q = set1(:,1:3);
+    end
+
+end
+toc
