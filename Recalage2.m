@@ -1,10 +1,6 @@
 
-function T,R = Recalage2(P_point, Q_point)
+function [T,R] = Recalage2(P_point, Q_point)
 
-
-
-    %load("P_point.mat");
-    %load("Q_point.mat");
 
     moy_P = mean(P_point);
     moy_Q = mean(Q_point);
@@ -12,7 +8,7 @@ function T,R = Recalage2(P_point, Q_point)
     Q_point_centre = Q_point - moy_Q;
 
 
-    M = P_point_centre' * Q_point_centre
+    M = P_point_centre' * Q_point_centre;
 
     [ U,S,V ] = svd (M);
 
