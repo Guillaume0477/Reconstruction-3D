@@ -2,14 +2,8 @@
 clear variables;
 close all;
 
-n=10;
-
-load("P_point.m");
-load("Q_point.m");
-
-%P_point = zeros (n,3);
-%Q_point = zeros (n,3);
-
+load("P_point.mat");
+load("Q_point.mat");
 
 mean(P_point)
 moy_P = mean(P_point);
