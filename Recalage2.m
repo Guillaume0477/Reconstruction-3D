@@ -3,8 +3,12 @@ clear variables;
 close all;
 
 n=10;
-P_point = zeros (n,3);
-Q_point = zeros (n,3);
+
+load("P_point.m");
+load("Q_point.m");
+
+%P_point = zeros (n,3);
+%Q_point = zeros (n,3);
 
 
 mean(P_point)
